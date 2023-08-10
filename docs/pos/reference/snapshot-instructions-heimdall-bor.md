@@ -204,8 +204,11 @@ rm -rf /var/lib/bor/chaindata
 # rename and setup symlinks to match default client datadir configs
 mv ~/snapshots/heimdall_extract ~/snapshots/data
 mv ~/snapshots/bor_extract ~/snapshots/chaindata
+# make directories /var/lib/bor/data/bor/chaindata and /var/lib/heimdall/data not exist
+# /var/lib/heimdall/data -> ~/snapshots/data
 sudo ln -s ~/snapshots/data /var/lib/heimdall
-sudo ln -s ~/snapshots/chaindata /var/lib/bor
+# make /var/lib/bor/data/bor/chaindata -> ~/snapshots/chaindata
+sudo ln -s ~/snapshots/chaindata /var/lib/bor/data/bor
 
 # bring up clients with all snapshot data properly registered
 sudo service heimdalld start
